@@ -22,6 +22,7 @@ export const Diagnostics = require('Diagnostics');
 const FaceTracking = require('FaceTracking');
 const Time = require('Time');
 const Patches = require('Patches');
+const Shaders = require('Shaders');
 const Materials = require('Materials');
 const Textures = require('Textures');
 
@@ -51,8 +52,11 @@ const Textures = require('Textures');
 	var bocaAbierta = false;
 	var timeoutTimer = null;
 
+	// HAT MESHES
+	var hatMesh = null, hatEcuadorMesh = null;
+
 	// FACE & HAT MATERIALS
-	var hatMat = null, faceMat = null;;
+	var hatMat = null, faceMat = null;
 	
 	// FACE TEXTURES
 	var chilFaceTxt = null, peruFaceTxt = null, argeFaceTxt = null, coloFaceTxt = null, urugFaceTxt = null, panaFaceTxt = null, ecuaFaceTxt = null, brasFaceTxt = null, cariFaceTxt = null, mexiFaceTxt = null;
@@ -60,6 +64,7 @@ const Textures = require('Textures');
 	// HAT TEXTURES
 	var chilHatTxt = null, peruHatTxt = null, argeHatTxt = null, coloHatTxt = null, urugHatTxt = null, panaHatTxt = null, ecuaHatTxt = null, brasHatTxt = null, cariHatTxt = null, mexiHatTxt = null;
 
+	var normalDefault = null, normalColombia = null;
 	// SELECTED COUNTRY INDEX
 	var paisIndex = await Patches.outputs.getScalar('paisIndex');
 
@@ -109,15 +114,18 @@ const Textures = require('Textures');
 		Textures.findFirst('Mexico'),
 		Textures.findFirst('Caribe'),
 		Textures.findFirst('Gorro_GorroMotionLatam_AlbedoTransparency'),
+		Textures.findFirst('Gorro_Peru_Albedo'),
+		Textures.findFirst('Gorro_Argentina_Albedo'),
+		Textures.findFirst('Gorro_Colombia_Albedo'),
+		Textures.findFirst('Gorro_Argentina_Albedo'),
+		Textures.findFirst('Gorro_Panama_Albedo'),
+		Textures.findFirst('Gorro_Colombia_Albedo'),
+		Textures.findFirst('Gorro_Brasil_Albedo'),
+		Textures.findFirst('Gorro_Mexico_Albedo'),
+		Textures.findFirst('Gorro_Caribe_Albedo'),
 		Textures.findFirst('Gorro_GorroMotionLatam_Normal'),
-		Textures.findFirst('Gorro_GorroMotionLatam_Normal'),
-		Textures.findFirst('Gorro_GorroMotionLatam_Normal'),
-		Textures.findFirst('Gorro_GorroMotionLatam_Normal'),
-		Textures.findFirst('Gorro_GorroMotionLatam_Normal'),
-		Textures.findFirst('Gorro_GorroMotionLatam_Normal'),
-		Textures.findFirst('Gorro_GorroMotionLatam_Normal'),
-		Textures.findFirst('Gorro_GorroMotionLatam_Normal'),
-		Textures.findFirst('Gorro_GorroMotionLatam_Normal')
+		Scene.root.findFirst('Gorro smooth 1'),
+		Scene.root.findFirst('Gorro Ecuador')
 	]).then(function (results) {
 
 		hatMat = results[1];
@@ -140,12 +148,17 @@ const Textures = require('Textures');
 		panaHatTxt = results[18];
 		ecuaHatTxt = results[19];
 		brasHatTxt = results[20];
-		cariHatTxt = results[21];
-		mexiHatTxt = results[22];
+		mexiHatTxt = results[21];
+		cariHatTxt = results[22];
+		normalDefault = results[23];
+		hatMesh = results[24];
+		hatEcuadorMesh = results[25];
 
 		paisIndex.monitor().subscribe(function () {
-			// HideHats(results);
-			hatMat.hidden = false;
+			
+			hatMesh.hidden = false;
+			hatEcuadorMesh.hidden = true;
+			hatMat.normal = normalDefault;
 
 			switch (paisIndex.pinLastValue()) {
 				case 0:
@@ -167,6 +180,7 @@ const Textures = require('Textures');
 					// code block
 					faceMat.diffuse = coloFaceTxt;
 					hatMat.diffuse = coloHatTxt;
+					hatMat.normal = cariHatTxt;
 					break;
 				case 4:
 					// code block
@@ -181,7 +195,8 @@ const Textures = require('Textures');
 				case 6:
 					// code block
 					faceMat.diffuse = ecuaFaceTxt;
-					hatMat.diffuse = ecuaHatTxt;
+					hatMesh.hidden = true;
+					hatEcuadorMesh.hidden = false;
 					break;
 				case 7:
 					// code block
