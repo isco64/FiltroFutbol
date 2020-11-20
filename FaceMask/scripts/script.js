@@ -48,9 +48,10 @@ const Textures = require('Textures');
 	// Enables async/await in JS [part 2]
 
 	var particula1 = null, particula2 = null, particula3 = null;
-	var chileHat = null, peruHat = null, argentinaHat = null, colombiaHat = null, uruguayHat = null, panamaHat = null, ecuadorHat = null, brasilHat = null, caribeHat = null, mexicoHat = null;
-	var chileText = null, peruText = null, argentinaText = null, colombiaText = null, uruguayText = null, panamaText = null, ecuadorText = null, brasilText = null, caribeText = null, mexicoText = null, faceMat = null;
 	var bocaAbierta = false;
+	var hatMat = null, faceMat = null;;
+	var chilFaceTxt = null, peruFaceTxt = null, argeFaceTxt = null, coloFaceTxt = null, urugFaceTxt = null, panaFaceTxt = null, ecuaFaceTxt = null, brasFaceTxt = null, cariFaceTxt = null, mexiFaceTxt = null;
+	var chilHatTxt = null, peruHatTxt = null, argeHatTxt = null, coloHatTxt = null, urugHatTxt = null, panaHatTxt = null, ecuaHatTxt = null, brasHatTxt = null, cariHatTxt = null, mexiHatTxt = null;
 
 	var timeoutTimer = null;
 
@@ -90,7 +91,8 @@ const Textures = require('Textures');
 
 	Promise.all([
 		Scene.root.findFirst('Gorro smooth 1'),
-		Scene.root.findFirst('Gorro smooth 2'),
+		Materials.findFirst('lambert1'),
+		Materials.findFirst('FaceMat'),
 		Textures.findFirst('Chile'),
 		Textures.findFirst('Peru'),
 		Textures.findFirst('Argentina'),
@@ -101,68 +103,95 @@ const Textures = require('Textures');
 		Textures.findFirst('Brasil'),
 		Textures.findFirst('Caribe'),
 		Textures.findFirst('Mexico'),
-		Materials.findFirst('FaceMat')
+		Textures.findFirst('Gorro_GorroMotionLatam_AlbedoTransparency'),
+		Textures.findFirst('Gorro_GorroMotionLatam_Normal'),
+		Textures.findFirst('Gorro_GorroMotionLatam_Normal'),
+		Textures.findFirst('Gorro_GorroMotionLatam_Normal'),
+		Textures.findFirst('Gorro_GorroMotionLatam_Normal'),
+		Textures.findFirst('Gorro_GorroMotionLatam_Normal'),
+		Textures.findFirst('Gorro_GorroMotionLatam_Normal'),
+		Textures.findFirst('Gorro_GorroMotionLatam_Normal'),
+		Textures.findFirst('Gorro_GorroMotionLatam_Normal'),
+		Textures.findFirst('Gorro_GorroMotionLatam_Normal')
 	]).then(function (results) {
 
-		chileHat = results[0];
-		peruHat = results[1];
-		chileText = results[2];
-		peruText = results[3];
-		argentinaText = results[4];
-		colombiaText = results[5];
-		uruguayText = results[6];
-		panamaText = results[7];
-		ecuadorText = results[8];
-		brasilText = results[9];
-		caribeText = results[10];
-		mexicoText = results[11];
-		faceMat = results[12];
+		hatMat = results[1];
+		faceMat = results[2];
+		chilFaceTxt = results[3];
+		peruFaceTxt = results[4];
+		argeFaceTxt = results[5];
+		coloFaceTxt = results[6];
+		urugFaceTxt = results[7];
+		panaFaceTxt = results[8];
+		ecuaFaceTxt = results[9];
+		brasFaceTxt = results[10];
+		cariFaceTxt = results[11];
+		mexiFaceTxt = results[12];
+		chilHatTxt = results[13];
+		peruHatTxt = results[14];
+		argeHatTxt = results[15];
+		coloHatTxt = results[16];
+		urugHatTxt = results[17];
+		panaHatTxt = results[18];
+		ecuaHatTxt = results[19];
+		brasHatTxt = results[20];
+		cariHatTxt = results[21];
+		mexiHatTxt = results[22];
 
 		paisIndex.monitor().subscribe(function () {
-			HideHats(results);
+			// HideHats(results);
+			hatMat.hidden = false;
 
 			switch (paisIndex.pinLastValue()) {
 				case 0:
-					chileHat.hidden = false;
-					faceMat.diffuse = chileText;
+					faceMat.diffuse = chilFaceTxt;
+					hatMat.diffuse = chilHatTxt
 					// code block
 					break;
 				case 1:
-					peruHat.hidden = false;
-					faceMat.diffuse = peruText;
+					faceMat.diffuse = peruFaceTxt;
+					hatMat.diffuse = peruHatTxt
 					// code block
 					break;
 				case 2:
 					// code block
-					faceMat.diffuse = argentinaText;
+					faceMat.diffuse = argeFaceTxt;
+					hatMat.diffuse = argeHatTxt
 					break;
 				case 3:
 					// code block
-					faceMat.diffuse = colombiaText;
+					faceMat.diffuse = coloFaceTxt;
+					hatMat.diffuse = coloHatTxt
 					break;
 				case 4:
 					// code block
-					faceMat.diffuse = uruguayText;
+					faceMat.diffuse = urugFaceTxt;
+					hatMat.diffuse = urugHatTxt
 					break;
 				case 5:
 					// code block
-					faceMat.diffuse = panamaText;
+					faceMat.diffuse = panaFaceTxt;
+					hatMat.diffuse = panaHatTxt
 					break;
 				case 6:
 					// code block
-					faceMat.diffuse = ecuadorText;
+					faceMat.diffuse = ecuaFaceTxt;
+					hatMat.diffuse = ecuaHatTxt
 					break;
 				case 7:
 					// code block
-					faceMat.diffuse = brasilText;
+					faceMat.diffuse = brasFaceTxt;
+					hatMat.diffuse = brasHatTxt
 					break;
 				case 8:
 					// code block
-					faceMat.diffuse = caribeText;
+					faceMat.diffuse = cariFaceTxt;
+					hatMat.diffuse = cariHatTxt
 					break;
 				case 9:
 					// code block
-					faceMat.diffuse = mexicoText;
+					faceMat.diffuse = mexiFaceTxt;
+					hatMat.diffuse = mexiHatTxt
 					break;
 			}
 		}
