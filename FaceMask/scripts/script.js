@@ -106,8 +106,8 @@ const Textures = require('Textures');
 		Textures.findFirst('Panama'),
 		Textures.findFirst('Ecuador'),
 		Textures.findFirst('Brasil'),
-		Textures.findFirst('Caribe'),
 		Textures.findFirst('Mexico'),
+		Textures.findFirst('Caribe'),
 		Textures.findFirst('Gorro_GorroMotionLatam_AlbedoTransparency'),
 		Textures.findFirst('Gorro_GorroMotionLatam_Normal'),
 		Textures.findFirst('Gorro_GorroMotionLatam_Normal'),
@@ -130,8 +130,8 @@ const Textures = require('Textures');
 		panaFaceTxt = results[8];
 		ecuaFaceTxt = results[9];
 		brasFaceTxt = results[10];
-		cariFaceTxt = results[11];
-		mexiFaceTxt = results[12];
+		mexiFaceTxt = results[11];
+		cariFaceTxt = results[12];
 		chilHatTxt = results[13];
 		peruHatTxt = results[14];
 		argeHatTxt = results[15];
@@ -150,53 +150,53 @@ const Textures = require('Textures');
 			switch (paisIndex.pinLastValue()) {
 				case 0:
 					faceMat.diffuse = chilFaceTxt;
-					hatMat.diffuse = chilHatTxt
+					hatMat.diffuse = chilHatTxt;
 					// code block
 					break;
 				case 1:
 					faceMat.diffuse = peruFaceTxt;
-					hatMat.diffuse = peruHatTxt
+					hatMat.diffuse = peruHatTxt;
 					// code block
 					break;
 				case 2:
 					// code block
 					faceMat.diffuse = argeFaceTxt;
-					hatMat.diffuse = argeHatTxt
+					hatMat.diffuse = argeHatTxt;
 					break;
 				case 3:
 					// code block
 					faceMat.diffuse = coloFaceTxt;
-					hatMat.diffuse = coloHatTxt
+					hatMat.diffuse = coloHatTxt;
 					break;
 				case 4:
 					// code block
 					faceMat.diffuse = urugFaceTxt;
-					hatMat.diffuse = urugHatTxt
+					hatMat.diffuse = urugHatTxt;
 					break;
 				case 5:
 					// code block
 					faceMat.diffuse = panaFaceTxt;
-					hatMat.diffuse = panaHatTxt
+					hatMat.diffuse = panaHatTxt;
 					break;
 				case 6:
 					// code block
 					faceMat.diffuse = ecuaFaceTxt;
-					hatMat.diffuse = ecuaHatTxt
+					hatMat.diffuse = ecuaHatTxt;
 					break;
 				case 7:
 					// code block
 					faceMat.diffuse = brasFaceTxt;
-					hatMat.diffuse = brasHatTxt
+					hatMat.diffuse = brasHatTxt;
 					break;
 				case 8:
 					// code block
-					faceMat.diffuse = cariFaceTxt;
-					hatMat.diffuse = cariHatTxt
+					faceMat.diffuse = mexiFaceTxt;
+					hatMat.diffuse = mexiHatTxt;
 					break;
 				case 9:
 					// code block
-					faceMat.diffuse = mexiFaceTxt;
-					hatMat.diffuse = mexiHatTxt
+					faceMat.diffuse = cariFaceTxt;
+					hatMat.diffuse = cariHatTxt;					
 					break;
 			}
 		}
