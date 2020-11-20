@@ -49,14 +49,19 @@ const Textures = require('Textures');
 
 	var particula1 = null, particula2 = null, particula3 = null;
 	var bocaAbierta = false;
-	var hatMat = null, faceMat = null;;
-	var chilFaceTxt = null, peruFaceTxt = null, argeFaceTxt = null, coloFaceTxt = null, urugFaceTxt = null, panaFaceTxt = null, ecuaFaceTxt = null, brasFaceTxt = null, cariFaceTxt = null, mexiFaceTxt = null;
-	var chilHatTxt = null, peruHatTxt = null, argeHatTxt = null, coloHatTxt = null, urugHatTxt = null, panaHatTxt = null, ecuaHatTxt = null, brasHatTxt = null, cariHatTxt = null, mexiHatTxt = null;
-
 	var timeoutTimer = null;
 
+	// FACE & HAT MATERIALS
+	var hatMat = null, faceMat = null;;
+	
+	// FACE TEXTURES
+	var chilFaceTxt = null, peruFaceTxt = null, argeFaceTxt = null, coloFaceTxt = null, urugFaceTxt = null, panaFaceTxt = null, ecuaFaceTxt = null, brasFaceTxt = null, cariFaceTxt = null, mexiFaceTxt = null;
+	
+	// HAT TEXTURES
+	var chilHatTxt = null, peruHatTxt = null, argeHatTxt = null, coloHatTxt = null, urugHatTxt = null, panaHatTxt = null, ecuaHatTxt = null, brasHatTxt = null, cariHatTxt = null, mexiHatTxt = null;
+
+	// SELECTED COUNTRY INDEX
 	var paisIndex = await Patches.outputs.getScalar('paisIndex');
-	Diagnostics.log(paisIndex.pinLastValue());
 
 	Promise.all([
 		Scene.root.findFirst('particula1'),
