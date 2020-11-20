@@ -108,14 +108,14 @@ const Textures = require('Textures');
 		peruHat = results[1];
 		chileText = results[2];
 		peruText = results[3];
-		// argentinaText = results[4];
-		// colombiaText = results[5];
-		// uruguayText = results[6];
-		// panamaText = results[7];
-		// ecuadorText = results[8];
-		// brasilText = results[9];
-		// caribeText = results[10];
-		// mexicoText = results[11];
+		argentinaText = results[4];
+		colombiaText = results[5];
+		uruguayText = results[6];
+		panamaText = results[7];
+		ecuadorText = results[8];
+		brasilText = results[9];
+		caribeText = results[10];
+		mexicoText = results[11];
 		faceMat = results[12];
 
 		paisIndex.monitor().subscribe(function () {
@@ -132,38 +132,38 @@ const Textures = require('Textures');
 					faceMat.diffuse = peruText;
 					// code block
 					break;
-				// case 2:
-				// 	// code block
-				// 	faceMat.diffuse = argentinaText;
-				// 	break;
-				// case 3:
-				// 	// code block
-				// 	faceMat.diffuse = colombiaText;
-				// 	break;
-				// case 4:
-				// 	// code block
-				// 	faceMat.diffuse = uruguayText;
-				// 	break;
-				// case 5:
-				// 	// code block
-				// 	faceMat.diffuse = panamaText;
-				// 	break;
-				// case 6:
-				// 	// code block
-				// 	faceMat.diffuse = ecuadorText;
-				// 	break;
-				// case 7:
-				// 	// code block
-				// 	faceMat.diffuse = brasilText;
-				// 	break;
-				// case 8:
-				// 	// code block
-				// 	faceMat.diffuse = caribeText;
-				// 	break;
-				// case 9:
-				// 	// code block
-				// 	faceMat.diffuse = mexicoText;
-				// 	break;
+				case 2:
+					// code block
+					faceMat.diffuse = argentinaText;
+					break;
+				case 3:
+					// code block
+					faceMat.diffuse = colombiaText;
+					break;
+				case 4:
+					// code block
+					faceMat.diffuse = uruguayText;
+					break;
+				case 5:
+					// code block
+					faceMat.diffuse = panamaText;
+					break;
+				case 6:
+					// code block
+					faceMat.diffuse = ecuadorText;
+					break;
+				case 7:
+					// code block
+					faceMat.diffuse = brasilText;
+					break;
+				case 8:
+					// code block
+					faceMat.diffuse = caribeText;
+					break;
+				case 9:
+					// code block
+					faceMat.diffuse = mexicoText;
+					break;
 			}
 		}
 		);
